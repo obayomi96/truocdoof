@@ -5,7 +5,7 @@ import { ReactComponent as SearchIcon } from "./svgs/search-icon.svg";
 import FolderCard from "./components/FolderCard";
 import FileCard from "./components/FileCard";
 import ImagePreviewModal from "./components/ImagePreviewModal";
-// import MOCK_API_DATA from "./data/MOCK_DATA.json";
+import MOCK_API_DATA from "./data/MOCK_DATA.json";
 
 const API_URL: string = process.env.REACT_APP_API_URL || "";
 interface MyObject {
@@ -27,12 +27,12 @@ function App() {
   const [showInnerContentsView, setShowInnerContentsView] = useState(false);
 
   const handleFetchData = async () => {
-    // FOR CORS ISSUES YOU MAY USE MOCK_DATA FOR TEST
+    // DUE TO API CORS ISSUES YOU MAY USE MOCK_DATA FOR TEST AS SEEN
     const { data } = await axios.get(API_URL);
-    const files = data?.filter(
+    const files = MOCK_API_DATA?.filter(
       (item: any, index: number) => item.type === "file"
     );
-    const folders = data?.filter(
+    const folders = MOCK_API_DATA?.filter(
       (item: any, index: number) => item.type === "folder"
     );
 
