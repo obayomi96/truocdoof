@@ -20,9 +20,7 @@ function App() {
   const [foldersList, setFoldersList] = useState<any[]>([]);
   const [filesList, setFilesList] = useState<any[]>([]);
   const [showImagePreviewModal, setShowImagePreviewModal] = useState(false);
-  const [showFolderPreviewModal, setShowFolderPreviewModal] = useState(false);
   const [singleFile, setSingleFile] = useState<any | null>(null);
-  const [singleFolder, setSingleFolder] = useState<any | null>(null);
   const [innerContents, setInnerContents] = useState<any | null>(null);
   const [showInnerContentsView, setShowInnerContentsView] = useState(false);
 
@@ -45,16 +43,15 @@ function App() {
   }, []);
 
   const handleFolderClick = (itemObject: any) => {
-    setSingleFolder(itemObject);
     if (itemObject.contents.length) {
       setInnerContents(itemObject.contents);
       setShowInnerContentsView(true);
     }
   };
 
-  function sortArrayByName(arr: Item[]): Item[] {
+  const sortArrayByName = (arr: Item[]): Item[] => {
     return arr.slice().sort((a, b) => a.name.localeCompare(b.name));
-  }
+  };
 
   const sortByCreatedAt = (arr: MyObject[]): MyObject[] => {
     return arr
@@ -210,11 +207,6 @@ function App() {
         itemObject={singleFile}
         closeModal={() => setShowImagePreviewModal(false)}
         isVisible={showImagePreviewModal}
-      />
-      <ImagePreviewModal
-        itemObject={singleFolder}
-        closeModal={() => setShowFolderPreviewModal(false)}
-        isVisible={showFolderPreviewModal}
       />
     </div>
   );
