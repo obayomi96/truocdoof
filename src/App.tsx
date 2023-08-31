@@ -7,7 +7,7 @@ import FileCard from "./components/FileCard";
 import ImagePreviewModal from "./components/ImagePreviewModal";
 import MOCK_API_DATA from "./data/MOCK_DATA.json";
 
-// const API_URL: string = process.env.REACT_APP_API_URL || "";
+// const API_URL: string = process.env.REACT_APP_API_URL || "http://3wdz.c.time4vps.cloud:3000";
 interface MyObject {
   created_at: string;
 }
